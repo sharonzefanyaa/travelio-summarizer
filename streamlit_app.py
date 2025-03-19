@@ -356,7 +356,7 @@ elif menu == "✨ Make Summarization":
             # Process all sentences in the DataFrame
             all_sentences = []
             for review in current_df['prep_reviews']:
-                sentences = tokenize_sents(str(review))
+                sentences = tokenize(str(review))
                 all_sentences.extend(sentences)
                 
             with st.spinner("Analyzing important sentences..."):
