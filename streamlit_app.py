@@ -6,14 +6,24 @@ import nltk
 import os
 import ssl
 from typing import Dict, Tuple
-from nltk.tokenize import PunktSentenceTokenizer
+from nltk.tokenize import sent_tokenize
 from transformers import BertTokenizer, BertModel, BartTokenizer, BartForConditionalGeneration, AutoTokenizer
 
-# Download required NLTK data
-#try:
-#    nltk.data.find('tokenizers/PunktSentenceTokenizer')
-#except LookupError:
-#    nltk.download('PunktSentenceTokenizer')
+# Replace all NLTK imports with this block
+try:
+    import nltk
+    from nltk.tokenize import sent_tokenize
+    nltk.download('punkt_tab')
+    nltk.download('punkt')
+except ImportError:
+    # Define a fallback tokenizer if NLTK isn't available
+    def sent_tokenize(text):
+        """Split text into sentences using regex as fallback"""
+        import re
+        # Split on sentence-ending punctuation followed by whitespace
+        sentences = re.split(r'(?<=[.!?])\s+', text)
+        # Filter out empty sentences
+        return [s.strip() for s in sentences if s.strip()]
 
 # Model Loading with Caching
 @st.cache_resource
@@ -356,8 +366,22 @@ elif menu == "✨ Make Summarization":
             # Process all sentences in the DataFrame
             all_sentences = []
             for review in current_df['prep_reviews']:
-                sentences = tokenize(str(review))
-                all_sentences.extend(sentences)
+                try:
+                    # First try with transformers tokenizer if available
+                    if 'sentence_tokenizer' in globals() and sentence_tokenizer is not None:
+                        # Simple regex-based splitting
+                        import re
+                        sentences = re.split(r'(?<=[.!?])\s+', str(review))
+                        sentences = [s.strip() for s in sentences if s.strip()]
+                    else:
+                        # Fallback to our custom function
+                        sentences = sent_tokenize(str(review))
+                    
+                    all_sentences.extend(sentences)
+                except Exception as e:
+                    st.warning(f"Error tokenizing review: {str(e)}")
+                    # Add the review as a single sentence as fallback
+                    all_sentences.append(str(review))
                 
             with st.spinner("Analyzing important sentences..."):
                 important_sentences = extract_important_sentences(
