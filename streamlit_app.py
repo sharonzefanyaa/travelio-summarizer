@@ -306,7 +306,7 @@ if 'sidebar_state' not in st.session_state:
 with st.sidebar:
     menu = st.radio(
         "",
-        ["👋 Hello", "📊 View Data", "📝 View Summarization", "✨ Make Summarization"],
+        ["👋 Welcome", "📊 View Data", "📝 View Summarization", "✨ Make Summarization"],
         label_visibility="collapsed"
     )
 
