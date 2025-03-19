@@ -6,26 +6,15 @@ import nltk
 import os
 import ssl
 from typing import Dict, Tuple
-from nltk.tokenize import sent_tokenize
-from transformers import BertTokenizer, BertModel, BartTokenizer, BartForConditionalGeneration # type: ignore
+from nltk.tokenize import tokenize_sents
+from transformers import BertTokenizer, BertModel, BartTokenizer, BartForConditionalGeneration, AutoTokenizer
 
-
-# Fix SSL certificate issue for NLTK downloads
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
-
-# Download punkt for all available languages
-nltk.download('punkt', quiet=True)
 
 # Download required NLTK data
-#try:
-#    nltk.data.find('tokenizers/punkt')
-#except LookupError:
-#    nltk.download('punkt_tab')
+try:
+    nltk.data.find('tokenizers/PunktSentenceTokenizer')
+except LookupError:
+    nltk.download('PunktSentenceTokenizer')
 
 # Model Loading with Caching
 @st.cache_resource
@@ -368,7 +357,7 @@ elif menu == "✨ Make Summarization":
             # Process all sentences in the DataFrame
             all_sentences = []
             for review in current_df['prep_reviews']:
-                sentences = sent_tokenize(str(review))
+                sentences = tokenize_sents(str(review))
                 all_sentences.extend(sentences)
                 
             with st.spinner("Analyzing important sentences..."):
