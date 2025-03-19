@@ -4,3 +4,4 @@ transformers
 nltk
 numpy
 pandas
+openpyxl
