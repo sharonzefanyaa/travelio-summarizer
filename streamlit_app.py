@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import re
-import torch # type: ignore
-import nltk # type: ignore
+import torch
+import nltk
 from typing import Dict, Tuple
 from nltk.tokenize import sent_tokenize # type: ignore
 from transformers import BertTokenizer, BertModel, BartTokenizer, BartForConditionalGeneration # type: ignore
