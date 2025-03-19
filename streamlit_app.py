@@ -6,7 +6,7 @@ import nltk
 import os
 import ssl
 from typing import Dict, Tuple
-from nltk.tokenize import tokenize_sents
+from nltk.tokenize import PunktSentenceTokenizer
 from transformers import BertTokenizer, BertModel, BartTokenizer, BartForConditionalGeneration, AutoTokenizer
 
 
