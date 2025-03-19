@@ -9,12 +9,11 @@ from typing import Dict, Tuple
 from nltk.tokenize import PunktSentenceTokenizer
 from transformers import BertTokenizer, BertModel, BartTokenizer, BartForConditionalGeneration, AutoTokenizer
 
-
 # Download required NLTK data
-try:
-    nltk.data.find('tokenizers/PunktSentenceTokenizer')
-except LookupError:
-    nltk.download('PunktSentenceTokenizer')
+#try:
+#    nltk.data.find('tokenizers/PunktSentenceTokenizer')
+#except LookupError:
+#    nltk.download('PunktSentenceTokenizer')
 
 # Model Loading with Caching
 @st.cache_resource
