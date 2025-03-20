@@ -423,7 +423,8 @@ elif menu == "📝 View Summarization":
     st.title("Pre-generated Summaries")
     st.write("""
     This section presents AI-generated summaries derived from the complete Travelio dataset, organized into three sentiment categories (positive, neutral, and negative). 
-    Key benefit of using these summaries: getting quick insights without having to analyze raw data themselves.
+    The key benefit of using these summaries is getting quick insights without having to analyze raw data yourself. 
+    Select a category to view the relevant summarized information.
     """)
     category = st.selectbox('Select summary category:', ['Positive', 'Neutral', 'Negative'])
     
