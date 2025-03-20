@@ -325,6 +325,11 @@ if menu == "👋 Welcome":
 
 elif menu == "✨ Make Summarization":
     st.title("Automatic Travelio Reviews Summarizer")
+    st.write("""
+    In this section, you can add your own comments about Travelio based on your selected category preference. 
+    The system will generate a comprehensive summary that includes both the existing dataset and your new input. 
+    Create personalized insights by adding your observations and let the system analyze everything together for a tailored summary experience.
+    """)
     
     category = st.selectbox('Select review category:', ['Positive', 'Neutral', 'Negative'])
     text = st.text_input('Enter your review here:')
@@ -416,6 +421,10 @@ elif menu == "✨ Make Summarization":
 
 elif menu == "📝 View Summarization":
     st.title("Pre-generated Summaries")
+    st.write("""
+    This section presents AI-generated summaries derived from the complete Travelio dataset, organized into three sentiment categories (positive, neutral, and negative). 
+    Key benefit of using these summaries: getting quick insights without having to analyze raw data themselves.
+    """)
     category = st.selectbox('Select summary category:', ['Positive', 'Neutral', 'Negative'])
     
     if st.button('Show Summary'):
@@ -429,6 +438,11 @@ elif menu == "📝 View Summarization":
 
 elif menu == "📊 View Data":
     st.title('Travelio Reviews Data')
+    st.write("""
+    This section contains the full Travelio dataset that powers the pre-generated summaries in the next menu. 
+    Access comprehensive travel information, metrics, and customer insights in their raw form before viewing simplified summaries.
+    Use this complete data view when you need detailed information beyond what's available in the summaries or when performing custom analysis.
+    """)
     
     category = st.selectbox('Select data category:', ['Positive', 'Neutral', 'Negative'])
     
