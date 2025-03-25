@@ -12,10 +12,10 @@ This application enables automated processing and summarization of Travelio cust
 
 ## Key Features
 
-👋 Hello: Welcome page introducing the application with a brief explanation of its purpose and functionality.
-📊 View Data: Explore raw Travelio review data categorized by positive, neutral, or negative sentiment.
-📝 View Summarization: Quick access to pre-generated summaries for each sentiment category of Travelio reviews.
-✨ Make Summarization: Main feature for creating new summaries from input review text using an advanced NLP pipeline.
+- 👋 Hello: Welcome page introducing the application with a brief explanation of its purpose and functionality.
+- 📊 View Data: Explore raw Travelio review data categorized by positive, neutral, or negative sentiment.
+- 📝 View Summarization: Quick access to pre-generated summaries for each sentiment category of Travelio reviews.
+- ✨ Make Summarization: Main feature for creating new summaries from input review text using an advanced NLP pipeline.
 
 ## How to Use
 
